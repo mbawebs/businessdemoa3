@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andanza Agencia de Viajes | Viajes, Tours y Paquetes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Manrope',sans-serif;
+background:#fbfffd;
+color:#123033;
+overflow-x:hidden;
+}
+
+.hero{
+min-height:100vh;
+background:
+linear-gradient(90deg,rgba(0,92,102,.78),rgba(0,150,160,.35)),
+url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80');
+background-size:cover;
+background-position:center;
+color:white;
+display:flex;
+align-items:center;
+padding:110px 8%;
+position:relative;
+overflow:hidden;
+}
+
+.hero::after{
+content:'ANDANZA';
+position:absolute;
+right:-30px;
+bottom:-35px;
+font-family:'Playfair Display',serif;
+font-size:16rem;
+font-weight:800;
+opacity:.08;
+}
+
+.hero-content{
+max-width:850px;
+position:relative;
+z-index:2;
+}
+
+.demo-label{
+display:inline-block;
+background:#c8ff4d;
+color:#123033;
+padding:13px 22px;
+border-radius:999px;
+font-weight:900;
+margin-bottom:26px;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:6.5rem;
+line-height:.9;
+margin-bottom:24px;
+}
+
+.hero h1 span{
+display:block;
+color:#8ff4ff;
+}
+
+.hero p{
+font-size:1.2rem;
+line-height:1.9;
+max-width:760px;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+display:inline-block;
+padding:16px 30px;
+border-radius:999px;
+text-decoration:none;
+font-weight:900;
+transition:.3s;
+}
+
+.btn-main{
+background:#c8ff4d;
+color:#123033;
+}
+
+.btn-blue{
+background:#19c4d2;
+color:white;
+}
+
+.btn-outline{
+border:2px solid rgba(255,255,255,.55);
+color:white;
+}
+
+.demo-banner{
+background:#c8ff4d;
+color:#123033;
+padding:24px 8%;
+text-align:center;
+font-weight:800;
+font-size:1.05rem;
+}
+
+.demo-banner strong{
+display:block;
+font-size:1.35rem;
+margin-bottom:6px;
+}
+
+.trip-cards{
+width:88%;
+max-width:1200px;
+margin:-60px auto 0;
+position:relative;
+z-index:5;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:22px;
+}
+
+.trip-card{
+background:white;
+border-radius:26px;
+overflow:hidden;
+box-shadow:0 18px 40px rgba(0,0,0,.16);
+}
+
+.trip-img{
+height:190px;
+background-size:cover;
+background-position:center;
+}
+
+.t1{background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');}
+.t2{background-image:url('https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=900&q=80');}
+.t3{background-image:url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80');}
+.t4{background-image:url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=80');}
+
+.trip-content{
+padding:24px;
+}
+
+.trip-content h3{
+color:#008d98;
+margin-bottom:8px;
+font-size:1.25rem;
+}
+
+.trip-content p{
+color:#5f7174;
+line-height:1.6;
+font-size:.95rem;
+}
+
+.name-section{
+padding:120px 8%;
+background:white;
+text-align:center;
+}
+
+.name-section h2{
+font-family:'Playfair Display',serif;
+font-size:7rem;
+line-height:.9;
+color:#008d98;
+margin-bottom:25px;
+}
+
+.name-section h2 span{
+color:#82c341;
+display:block;
+}
+
+.name-section p{
+max-width:900px;
+margin:auto;
+line-height:2;
+font-size:1.15rem;
+color:#5f7174;
+}
+
+.services{
+padding:110px 8%;
+background:#eefafa;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:65px;
+}
+
+.section-title h2{
+font-family:'Playfair Display',serif;
+font-size:4.5rem;
+color:#123033;
+margin-bottom:15px;
+}
+
+.section-title p{
+color:#5f7174;
+font-size:1.06rem;
+}
+
+.service-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.service{
+background:white;
+padding:38px;
+border-radius:28px;
+box-shadow:0 12px 28px rgba(0,0,0,.06);
+}
+
+.service h3{
+color:#008d98;
+font-size:1.45rem;
+margin-bottom:15px;
+}
+
+.service p{
+color:#5f7174;
+line-height:1.8;
+}
+
+.feature{
+display:grid;
+grid-template-columns:1fr 1fr;
+background:#123033;
+color:white;
+}
+
+.feature-img{
+min-height:660px;
+background:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1500&q=80');
+background-size:cover;
+background-position:center;
+}
+
+.feature-text{
+padding:95px 8%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.feature-text h2{
+font-family:'Playfair Display',serif;
+font-size:4.8rem;
+line-height:.95;
+margin-bottom:25px;
+}
+
+.feature-text h2 span{
+color:#c8ff4d;
+}
+
+.feature-text p{
+line-height:1.9;
+font-size:1.1rem;
+color:#e9f7f5;
+margin-bottom:30px;
+}
+
+.destinations{
+padding:120px 8%;
+background:white;
+}
+
+.destination-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:25px;
+}
+
+.big-destination{
+min-height:600px;
+border-radius:34px;
+background:
+linear-gradient(to top,rgba(0,0,0,.65),transparent),
+url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1400&q=80');
+background-size:cover;
+background-position:center;
+padding:40px;
+display:flex;
+align-items:flex-end;
+color:white;
+}
+
+.big-destination h3{
+font-family:'Playfair Display',serif;
+font-size:3.5rem;
+line-height:1;
+}
+
+.small-destinations{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.small-destination{
+min-height:287px;
+border-radius:30px;
+background-size:cover;
+background-position:center;
+padding:30px;
+display:flex;
+align-items:flex-end;
+color:white;
+position:relative;
+overflow:hidden;
+}
+
+.small-destination::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
+}
+
+.small-destination h3{
+position:relative;
+font-size:2rem;
+}
+
+.d2{background-image:url('https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=1000&q=80');}
+.d3{background-image:url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1000&q=80');}
+
+.stats{
+padding:90px 8%;
+background:#008d98;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+text-align:center;
+color:white;
+}
+
+.stat h2{
+font-family:'Playfair Display',serif;
+font-size:4.2rem;
+margin-bottom:8px;
+color:#c8ff4d;
+}
+
+.stat p{
+color:#e8ffff;
+}
+
+.demo-box{
+width:88%;
+max-width:1100px;
+margin:75px auto;
+background:white;
+border:3px solid #c8ff4d;
+border-radius:30px;
+padding:38px;
+text-align:center;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.demo-box h3{
+font-size:1.8rem;
+margin-bottom:12px;
+color:#008d98;
+}
+
+.demo-box p{
+line-height:1.8;
+color:#5f7174;
+}
+
+.contact{
+padding:120px 8%;
+background:#eefafa;
+}
+
+.contact-title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.contact-title h2{
+font-family:'Playfair Display',serif;
+font-size:5.4rem;
+line-height:.9;
+color:#123033;
+}
+
+.contact-title h2 span{
+display:block;
+color:#008d98;
+}
+
+.contact-wrapper{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:.95fr 1.05fr;
+gap:45px;
+}
+
+.contact-card{
+background:white;
+border-radius:32px;
+padding:45px;
+box-shadow:0 12px 30px rgba(0,0,0,.07);
+}
+
+.contact-card h3{
+font-size:2rem;
+color:#008d98;
+margin-bottom:25px;
+}
+
+.contact-card p{
+margin-bottom:20px;
+line-height:1.8;
+color:#5f7174;
+font-size:1.05rem;
+}
+
+.contact-card strong{
+color:#123033;
+}
+
+.map{
+min-height:500px;
+border-radius:32px;
+background:
+linear-gradient(rgba(0,141,152,.18),rgba(0,141,152,.18)),
+url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80');
+background-size:cover;
+background-position:center;
+position:relative;
+overflow:hidden;
+}
+
+.map-label{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:24px 30px;
+border-radius:22px;
+box-shadow:0 15px 35px rgba(0,0,0,.18);
+text-align:center;
+}
+
+.map-label h3{
+color:#008d98;
+margin-bottom:5px;
+}
+
+footer{
+background:#123033;
+padding:45px 8%;
+text-align:center;
+color:white;
+}
+
+footer strong{
+color:#c8ff4d;
+font-size:1.25rem;
+}
+
+@media(max-width:950px){
+
+.hero{
+padding:90px 7%;
+}
+
+.hero h1{
+font-size:4rem;
+}
+
+.hero::after{
+font-size:7rem;
+}
+
+.trip-cards,
+.service-grid,
+.stats{
+grid-template-columns:1fr;
+}
+
+.feature,
+.destination-grid,
+.contact-wrapper{
+grid-template-columns:1fr;
+}
+
+.name-section h2,
+.section-title h2,
+.feature-text h2,
+.contact-title h2{
+font-size:3rem;
+}
+
+.feature-img,
+.map{
+min-height:410px;
+}
+
+.destination-grid{
+gap:20px;
+}
+
+.big-destination{
+min-height:430px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="demo-label">DEMO WEB PARA ANDANZA AGENCIA DE VIAJES</div>
+
+<h1>
+Andanza
+<span>Agencia de Viajes</span>
+</h1>
+
+<p>
+Viajes, cruceros, boletos de avión, tours, hoteles, paquetes, lunas de miel y bodas en playa. Todo para que tu próxima aventura empiece sin complicaciones.
+</p>
+
+<div class="hero-buttons">
+<a href="#contacto" class="btn btn-main">Cotizar Viaje</a>
+<a href="#servicios" class="btn btn-blue">Ver Paquetes</a>
+<a href="#destinos" class="btn btn-outline">Destinos</a>
+</div>
+
+</div>
+
+</section>
+
+<section class="demo-banner">
+<strong>🌴 ESTA ES UNA DEMOSTRACIÓN VISUAL 🌴</strong>
+Página creada como propuesta para mostrar cómo podría verse un sitio web profesional para ANDANZA Agencia de Viajes.
+</section>
+
+<section class="trip-cards">
+
+<div class="trip-card">
+<div class="trip-img t1"></div>
+<div class="trip-content">
+<h3>Experiencias</h3>
+<p>Viajes personalizados para parejas, familias y grupos.</p>
+</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-img t2"></div>
+<div class="trip-content">
+<h3>Cruceros</h3>
+<p>Opciones para disfrutar rutas nacionales e internacionales.</p>
+</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-img t3"></div>
+<div class="trip-content">
+<h3>Europa</h3>
+<p>Paquetes turísticos para conocer ciudades inolvidables.</p>
+</div>
+</div>
+
+<div class="trip-card">
+<div class="trip-img t4"></div>
+<div class="trip-content">
+<h3>Luna de Miel</h3>
+<p>Escapadas románticas y bodas en playa.</p>
+</div>
+</div>
+
+</section>
+
+<section class="name-section">
+
+<h2>
+ANDANZA
+<span>AGENCIA DE VIAJES</span>
+</h2>
+
+<p>
+ANDANZA Agencia de Viajes ayuda a planear experiencias memorables con paquetes, vuelos, hoteles, tours y asesoría para que cada cliente encuentre el viaje ideal.
+</p>
+
+</section>
+
+<section class="services" id="servicios">
+
+<div class="section-title">
+<h2>Servicios de Andanza</h2>
+<p>Todo lo necesario para organizar tu próximo viaje en un solo lugar.</p>
+</div>
+
+<div class="service-grid">
+
+<div class="service">
+<h3>Boletos de Avión</h3>
+<p>Apoyo para encontrar vuelos nacionales e internacionales.</p>
+</div>
+
+<div class="service">
+<h3>Paquetes Turísticos</h3>
+<p>Opciones completas con hospedaje, tours y experiencias.</p>
+</div>
+
+<div class="service">
+<h3>Hoteles</h3>
+<p>Reservaciones para viajes familiares, de pareja o de negocios.</p>
+</div>
+
+<div class="service">
+<h3>Cruceros</h3>
+<p>Rutas y paquetes para vivir una experiencia diferente en el mar.</p>
+</div>
+
+<div class="service">
+<h3>Luna de Miel</h3>
+<p>Viajes románticos diseñados para momentos especiales.</p>
+</div>
+
+<div class="service">
+<h3>Bodas en Playa</h3>
+<p>Planeación de experiencias para celebrar en destinos paradisíacos.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="feature">
+
+<div class="feature-img"></div>
+
+<div class="feature-text">
+
+<h2>
+ANDANZA TE LLEVA<br>
+<span>A TU PRÓXIMA AVENTURA</span>
+</h2>
+
+<p>
+Una página como esta permite mostrar promociones, destinos, paquetes y formas de contacto de manera más clara para convertir visitantes en clientes.
+</p>
+
+<a href="#contacto" class="btn btn-main">Quiero Cotizar</a>
+
+</div>
+
+</section>
+
+<section class="destinations" id="destinos">
+
+<div class="section-title">
+<h2>Destinos y Experiencias</h2>
+<p>Una presentación visual para destacar promociones, temporadas y paquetes especiales.</p>
+</div>
+
+<div class="destination-grid">
+
+<div class="big-destination">
+<h3>Viajes por México</h3>
+</div>
+
+<div class="small-destinations">
+
+<div class="small-destination d2">
+<h3>Sudamérica</h3>
+</div>
+
+<div class="small-destination d3">
+<h3>Playas y Escapadas</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+<h2>5.4K</h2>
+<p>Seguidores</p>
+</div>
+
+<div class="stat">
+<h2>100%</h2>
+<p>Recomendaciones</p>
+</div>
+
+<div class="stat">
+<h2>17</h2>
+<p>Opiniones positivas</p>
+</div>
+
+<div class="stat">
+<h2>MX</h2>
+<p>Viajes nacionales e internacionales</p>
+</div>
+
+</section>
+
+<section class="demo-box">
+
+<h3>Demo creada para ANDANZA Agencia de Viajes</h3>
+
+<p>
+Esta landing page es una propuesta visual para mostrar cómo podría verse un sitio web moderno de ANDANZA Agencia de Viajes. La información principal fue tomada de sus datos públicos y las imágenes son ilustrativas para fines de demostración.
+</p>
+
+</section>
+
+<section class="contact" id="contacto">
+
+<div class="contact-title">
+<h2>
+CONTACTA A
+<span>ANDANZA</span>
+</h2>
+</div>
+
+<div class="contact-wrapper">
+
+<div class="contact-card">
+
+<h3>Información de contacto</h3>
+
+<p>
+<strong>📍 Dirección:</strong><br>
+C Monteria 137 esq Av San Jorge, Sector San Jorge, Segundo Piso, General Zuazua, Nuevo León.
+</p>
+
+<p>
+<strong>📞 Teléfono:</strong><br>
+81 8334 9393
+</p>
+
+<p>
+<strong>📧 Correo:</strong><br>
+admon@andanzaviajes.com
+</p>
+
+<p>
+<strong>📱 Instagram:</strong><br>
+@andanzaviajes
+</p>
+
+<p>
+<strong>✈️ Servicios:</strong><br>
+Viajes, cruceros, boletos de avión, tours, hoteles, paquetes, luna de miel y bodas en playa.
+</p>
+
+<a href="#" class="btn btn-blue">Enviar Mensaje</a>
+
+</div>
+
+<div class="map">
+
+<div class="map-label">
+<h3>ANDANZA</h3>
+<p>General Zuazua, Nuevo León</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<strong>ANDANZA Agencia de Viajes</strong><br>
+Viajes · Tours · Hoteles · Paquetes · Bodas en Playa
+</footer>
+
+</body>
+</html>
